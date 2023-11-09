@@ -14,11 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from multiprocessing import context
 from django.contrib import admin
-from django.urls import path, re_path
-import ctspi.views
+from django.urls import path, re_path, include
+from django.shortcuts import render
+
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+handler404 = custom_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('', ctspi.views.main)
+    re_path(r'.*', include('ctspi.urls')),
 ]
