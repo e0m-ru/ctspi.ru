@@ -28,5 +28,5 @@ handler404 = custom_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('', include('ctspi.urls')),
+    re_path(r'.*', include('ctspi.urls')),
 ]

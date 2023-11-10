@@ -1,0 +1,29 @@
+{% extends "footer.html" %}
+{% block header %}
+
+<a href="/"><img src="/static/svg/CTSPI-01.svg" height="33px"></a>
+<h5 style="display: inline;">{{post.title}}</h5>
+
+<input id="toggle" type="checkbox"></input>
+<label id='menu_trigger' for="toggle" class="hamburger">
+    <div class="top-bun"></div>
+    <div class="meat"></div>
+    <div class="bottom-bun"></div>
+</label>
+
+<ul id='menu' class="menu">
+    {% for el in items %}
+    <li>
+        <a href="/{{ el.name }}">{{ el.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    var link = document.querySelector('#menu_trigger');
+    var elem = document.querySelector('#menu');
+
+    link.addEventListener('click', function () {
+        elem.classList.toggle('show')
+    });
+</script>
+{% endblock %}
