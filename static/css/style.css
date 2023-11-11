@@ -32,36 +32,46 @@ body {
 
 .menu {
   overflow: hidden;
-  height: 0px;
-  transition: all 1s ease-in-out;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  transition: all 0.1s ease-in-out;
+  list-style-type: none;
 }
-
+.menu li {
+  border-bottom: solid 1px;
+  padding: 0.5em;
+}
+.menu a {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
 .menu.show {
-  transition: all 1s ease-in-out;
-  height: 150px;
+  margin-top: 1em;
+  height: 100vh;
 }
 
 /** Hamburger **/
 .hamburger {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 1em;
+  top: 0.5em;
 }
 
 .hamburger div {
   position: relative;
-  width: 2em;
+  width: 35px;
   height: 5px;
-  border-radius: 1px;
   background-color: #fff;
-  margin-top: 8px;
+  margin-top: 6px;
   transition: all 0.3s ease-in-out;
 }
 
 /** Animations **/
 #toggle:checked + .hamburger .top-bun {
   transform: rotate(-45deg);
-  margin-top: 25px;
+  margin-top: 15px;
 }
 #toggle:checked + .hamburger .bottom-bun {
   opacity: 0;
@@ -69,7 +79,7 @@ body {
 }
 #toggle:checked + .hamburger .meat {
   transform: rotate(45deg);
-  margin-top: -3px;
+  margin-top: -5px;
 }
 
 #toggle:checked + .hamburger + .nav {
