@@ -1,3 +1,6 @@
 **__pycache__*
 *.venv
 *migrations/
+ctspi_config/settings.py
+.gitignore
+
