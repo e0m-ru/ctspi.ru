@@ -7,8 +7,6 @@
 {{ post.content|safe }}
 {{ post.description|safe }}
 <ul>
-
-
     {% for d in depts %}
     <li><a href="/departments/{{ d.name }}"> {{ d.title }}</li>
     {% endfor %}

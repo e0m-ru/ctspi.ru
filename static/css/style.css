@@ -1,14 +1,16 @@
 :root {
   --base_color: #1b75bc;
+  --dark-blue: #072f4e;
+  --light-blue: #bbd0df;
+  --white: #fefefe;
 }
 
 html,
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
-  height: 100vh;
-  width: 100vw;
   padding: 0px;
   margin: 0px;
+  background-color: var(--dark-blue);
 }
 
 .root {
@@ -19,34 +21,44 @@ body {
 .header,
 .footer {
   padding: 0.5em;
+  color: var(--light-blue);
   background-color: var(--base_color);
-  color: white;
 }
 
 .main {
   padding: 0.5em;
+  max-width: 1024px;
+  margin: auto;
+  background-color: var(--white);
 }
 
 .menu {
+  position: absolute;
   overflow: hidden;
   height: 0;
   margin: 0;
   padding: 0;
-  transition: all 0.1s ease-in-out;
+  width: 100%;
+  opacity: 0%;
+  transition: all 0.2s ease-in-out;
   list-style-type: none;
+  text-align: end;
+  right: 0;
+  background-color: var(--base_color);
 }
 .menu li {
   border-bottom: solid 1px;
   padding: 0.5em;
 }
+
 .menu a {
   text-align: center;
   color: white;
   text-decoration: none;
 }
 .menu.show {
-  margin-top: 1em;
-  height: 100vh;
+  height: 100%;
+  opacity: 97.5%;
 }
 
 /** Hamburger **/
@@ -90,7 +102,7 @@ body {
 
 @media only screen and (min-width: 1024px) {
   .main {
-    width: 1024px;
     margin: auto;
+    padding: 1em 10em 5em 10em;
   }
 }
