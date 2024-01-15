@@ -5,3 +5,4 @@ urlpatterns = [
     re_path(r'\w*', views.main),
     re_path(r'.*', views.ctspi_404),
 ]
+    

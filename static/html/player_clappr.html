@@ -2,14 +2,16 @@
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/level-selector.min.js"></script>
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/clappr-poster.min.js"></script>
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/audio-track-selector.min.js"></script>
-<div id="player-wrapper">
+<div id="player" style="position: relative;">
+    <img src="static/img/mid_logo.svg"
+        style="z-index: 999;position: absolute; top: 1rem; left:1rem; width: 4rem; opacity: .5;"></img>
 </div>
 <script>
     var poster;
     var player = new Clappr.Player({
         poster,
         language: 'ru-RU',
-        parentId: "#player-wrapper",
+        parentId: "#player",
         width: '720px',
         height: '405px',
         source: '//live-mid.cdnvideo.ru/mid_new1/mid2_multilang.smil/playlist.m3u8?DVR&separate_audio=true',
@@ -59,4 +61,40 @@
             </style>`
         )
     }
+
+</script>
+<script>
+    window.onload = function () {
+        var mediaControlLayers = document.getElementsByClassName('container');
+        if (mediaControlLayers.length > 0) {
+            var mediaControlLayer = mediaControlLayers[0];
+            var paragraph = document.createElement('p');
+            paragraph.style.fontSize = '0.75rem';
+            paragraph.style.padding = '0.5rem';
+            paragraph.style.zIndex = '999';
+            paragraph.style.position = 'absolute';
+            paragraph.style.bottom = '3rem';
+            paragraph.style.opacity = '0.75';
+            paragraph.style.backgroundColor = '#1b75bc';
+            paragraph.style.color = '#FFF';
+            paragraph.style.width = '100%';
+            mediaControlLayer.insertBefore(paragraph, mediaControlLayer.firstChild);
+
+            setInterval(function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://ctspi.e0m.ru/config.txt', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var newText = xhr.responseText;
+                        if (newText !== paragraph.textContent) {
+                            paragraph.textContent = newText;
+                        }
+                    }
+                };
+                xhr.send();
+            }, 1000);
+        } else {
+            console.log("Элементы с классом 'container' не найдены");
+        }
+    };
 </script>

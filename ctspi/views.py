@@ -1,7 +1,7 @@
-from os import name
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Main_contents, Department
-
+from ctspi_config.settings import STATIC_ROOT, BASE_DIR
+import re
 
 def main(request):
     url_path = request.path
@@ -28,3 +28,16 @@ def departments(request):
 
 def ctspi_404(request):
     return render(request, '404.html', status=404, context={'name': request.path})
+
+def save_to_csv(request):
+    with open(f"{BASE_DIR}{STATIC_ROOT}titl.csv", 'w', encoding='utf-8') as f:
+        f.write(f"  {str.replace(request.GET['title'],';','    ;   ')}".rstrip())
+    return redirect('https://ctspi.e0m.ru/static/html/ttt.html')
+
+def save_to_txt(request):
+    with open(f"{BASE_DIR}config.txt", 'w', encoding='utf-8') as f:
+        try:
+            f.write(request.POST['anons'])
+        except:
+            pass
+    return render(request, 'anons.html', context={'r': request, })

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Клиент</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+    }
+
+    form {
+        text-align: center;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    input[type="text"] {
+        position: relative;
+        width: 75vw;
+        display: block;
+        font-size: 1.5rem;
+        padding: 1rem;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+        display: block;
+        font-size: 1.5rem;
+        padding: 1rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <input type="text" id="configInput" placeholder="Введите строку для записи в файл" onkeydown="if(event.keyCode==13) sendData()">
+    <script>
+        function sendData() {
+            var data = document.getElementById("configInput").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://80.73.18.115:1234", true);
+            xhr.setRequestHeader("Content-Type", "text/plain");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    console.log("Ответ от сервера: " + response);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+</body>
+</html>
+
