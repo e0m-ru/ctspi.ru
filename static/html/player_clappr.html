@@ -21,7 +21,7 @@
             ClapprPoster,
         ],
         poster: {
-            url: '//playercdn.cdnvideo.ru/aloha/players/images/mid_poster.jpg',
+            url: 'https://ctspi.e0m.ru/static/img/mid_poster.jpg',
             scale: 'full',
         },
         mediacontrol: {
@@ -61,28 +61,22 @@
             </style>`
         )
     }
-
 </script>
+
+<!-- Скрипт добавляет строку анонса -->
+<!-- Допилить -->
 <script>
     window.onload = function () {
         var mediaControlLayers = document.getElementsByClassName('container');
         if (mediaControlLayers.length > 0) {
             var mediaControlLayer = mediaControlLayers[0];
             var paragraph = document.createElement('p');
-            paragraph.style.fontSize = '0.75rem';
-            paragraph.style.padding = '0.5rem';
-            paragraph.style.zIndex = '999';
-            paragraph.style.position = 'absolute';
-            paragraph.style.bottom = '3rem';
-            paragraph.style.opacity = '0.75';
-            paragraph.style.backgroundColor = '#1b75bc';
-            paragraph.style.color = '#FFF';
-            paragraph.style.width = '100%';
+            paragraph.setAttribute('class', 'anons_string')
             mediaControlLayer.insertBefore(paragraph, mediaControlLayer.firstChild);
 
             setInterval(function () {
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'https://ctspi.e0m.ru/config.txt', true);
+                xhr.open('GET', 'https://ctspi.e0m.ru/anons.txt', true);
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var newText = xhr.responseText;
