@@ -10,7 +10,7 @@
 </form>
 <script>
     function sendData() {
-        const url = 'https://ctspi.e0m.ru/write_anons';
+        const url = '/write_anons';
         const data = document.getElementById("anons_input").value;
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         fetch(url, {

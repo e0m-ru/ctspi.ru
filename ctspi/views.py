@@ -36,7 +36,7 @@ def anons(request):
 
 
 def write_anons(request):
-    with open('/var/www/ctspi.ru/static/anons.txt', 'w', encoding='utf-8') as file:
+    with open('/var/www/ctspi.ru/static/anons.csv', 'w', encoding='utf-8') as file:
         file.write(resp:=str(request.body.decode('utf-8')))
     # Создаем свой кастомный ответ
     custom_response = HttpResponse(resp, content_type="text/plain")
