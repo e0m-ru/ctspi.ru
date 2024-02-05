@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Main_contents, Department
 from ctspi_config.settings import STATIC_ROOT, BASE_DIR
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 def main(request):
     url_path = request.path
@@ -31,9 +32,10 @@ def ctspi_404(request):
     return render(request, '404.html', status=404, context={'name': request.path})
 
 
+@login_required(login_url="/login/")
 def anons(request):
-    return render(request, 'anons.html')
-
+    context = {'items': Main_contents.objects.all()}
+    return render(request, 'anons.html', context=context)
 
 def write_anons(request):
     with open('/var/www/ctspi.ru/static/anons.csv', 'w', encoding='utf-8') as file:

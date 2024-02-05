@@ -76,7 +76,8 @@
 
             setInterval(function () {
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'https://ctspi.e0m.ru/anons.txt', true);
+                xhr.withCredentials = true;
+                xhr.open('GET', 'https://ctspi.e0m.ru/static/anons.csv', true);
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var newText = xhr.responseText;

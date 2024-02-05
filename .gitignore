@@ -4,3 +4,4 @@
 ctspi_config/settings.py
 .gitignore
 
+static/anons.csv

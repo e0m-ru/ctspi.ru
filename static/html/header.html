@@ -9,6 +9,7 @@
     информации при Министерстве
     иностранных дел Российской Федерации»</h5> -->
 <input id="toggle" type="checkbox"></input>
+<h1>ФГУП «ЦТСПИ при МИД России»</h1>
 <label id='menu_trigger' for="toggle" class="hamburger">
     <div class="top-bun"></div>
     <div class="meat"></div>
@@ -21,6 +22,9 @@
         <a href="/{{ el.name }}">{{ el.title }}</a>
     </li>
     {% endfor %}
+    <li>
+        <a href="/anons">анонс</a>
+    </li>
 </ul>
 <script>
     var link = document.querySelector('#menu_trigger');
