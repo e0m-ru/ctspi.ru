@@ -5,3 +5,5 @@ ctspi_config/settings.py
 .gitignore
 
 static/anons.csv
+db.sqlite3
+static/anons.csv
