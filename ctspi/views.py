@@ -15,6 +15,7 @@ def main(request):
     try:
         post = Main_contents.objects.get(name=url_path[1:])
     except:
+        pass
         return ctspi_404(request)
     context.update({'post': post})
     return render(request, 'index.html', context)
@@ -38,10 +39,9 @@ def anons(request):
     return render(request, 'anons.html', context=context)
 
 def write_anons(request):
-    with open('/var/www/ctspi.ru/static/anons.csv', 'w', encoding='utf-8') as file:
+    with open(f'{BASE_DIR}/static/anons.csv', 'w', encoding='utf-8') as file:
         file.write(resp:=str(request.body.decode('utf-8')))
     # Создаем свой кастомный ответ
     custom_response = HttpResponse(resp, content_type="text/plain")
     custom_response.status_code = 200
-
     return custom_response

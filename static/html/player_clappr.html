@@ -2,9 +2,9 @@
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/level-selector.min.js"></script>
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/clappr-poster.min.js"></script>
 <script type="text/javascript" src="//playercdn.cdnvideo.ru/aloha/clappr/audio-track-selector.min.js"></script>
-<div id="player" style="position: relative;">
-    <img src="static/img/mid_logo.svg"
-        style="z-index: 999;position: absolute; top: 1rem; left:1rem; width: 4rem; opacity: .5;"></img>
+<div id="player">
+    <!-- <img src="static/img/mid_logo.svg"
+        style="z-index: 999;position: absolute; top: 1rem; left:1rem; width: 4rem; opacity: .5;"></img> -->
 </div>
 <script>
     var poster;
@@ -12,9 +12,7 @@
         poster,
         language: 'ru-RU',
         parentId: "#player",
-        width: '720px',
-        height: '405px',
-        source: '//live-mid.cdnvideo.ru/mid_new1/mid2_multilang.smil/playlist.m3u8?DVR&separate_audio=true',
+        source: 'https://live-mid.cdnvideo.ru/mid/mid.org/playlist.m3u8',
         plugins: [
             LevelSelector,
             AudioTrackSelector,
@@ -31,18 +29,7 @@
             seekbarColor: "white",
         },
 
-        AudioTrackSelectorConfig: {
-            labels: {
-                4: 'Español',
-                3: 'Français',
-                2: 'English',
-                1: 'Русский',
-                0: 'Оригинал',
-            },
-            labelCallback: function (trackInfo, label) {
-                return label;
-            }
-        },
+       
         playback: {
             playInline: true,
         },
@@ -81,9 +68,8 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var newText = xhr.responseText;
-                        if (newText !== paragraph.textContent) {
+
                             paragraph.textContent = newText;
-                        }
                     }
                 };
                 xhr.send();

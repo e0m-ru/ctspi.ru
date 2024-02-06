@@ -1,4 +1,4 @@
-from django.urls import re_path, path
+from django.urls import re_path, path, include
 from ctspi import views
 urlpatterns = [
     path('anons', views.anons),
@@ -7,4 +7,3 @@ urlpatterns = [
     re_path(r'\w*', views.main),
     re_path(r'.*', views.ctspi_404),
 ]
-    

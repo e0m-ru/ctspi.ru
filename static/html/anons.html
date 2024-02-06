@@ -3,6 +3,8 @@
 {% block title %}{{post.title}}{% endblock %}
 
 {% block content %}
+{% include "player_clappr.html" %}
+<h1 id="anons_header"></h1>
 <form method="post">{% csrf_token %}
     <textarea type="text" id="anons_input" placeholder="Введите строку анонса" cols="85" rows="3"
         onkeydown="if(event.keyCode == 13 && event.ctrlKey) sendData()" autocomplete="on">
